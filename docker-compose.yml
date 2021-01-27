@@ -1,0 +1,19 @@
+version: '3'
+
+volumes:
+  ngrok:
+
+networks:
+  app:
+
+services:
+  ngrok:
+    build: ./
+    restart: always
+    volumes:
+      - ./logs:/var/log/ngrok
+      - /root/.ngrok2:/root/.ngrok2
+    ports:
+      - 4040:4040
+    networks:
+      - app
